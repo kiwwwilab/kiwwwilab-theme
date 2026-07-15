@@ -4,27 +4,6 @@ if(!defined('ABSPATH')) {
 	exit;
 }
 
-// Theme Update Checker
-use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-
-$puc_file = __DIR__ . '/lib/theme-update-checker/theme-update-checker.php';
-
-if ( file_exists( $puc_file ) ) {
-    
-    require_once $puc_file;
-    
-    $myUpdateChecker = PucFactory::buildUpdateChecker(
-        'https://github.com/kiwwwilab/kiwwwilab-theme/',
-        __FILE__,
-        'kiwwwilab-theme'
-    );
-
-    $myUpdateChecker->setBranch('main');
-
-} else {
-    error_log('Error de Theme Update Checker: No es troba el fitxer a ' . $puc_file);
-}
-
 add_action( 'wp_enqueue_scripts', 'kiwwwilab_enqueue', 99 );
 
 function kiwwwilab_enqueue() {
